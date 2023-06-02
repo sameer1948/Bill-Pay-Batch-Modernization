@@ -31,14 +31,14 @@ public class Status {
 	private String transactionType;
 	
 	@Column(name="JOB_ID")
-	private Integer jobId;
+	private String jobId;
 
 	public Status() {
 		super();
 	}
 	
 	public Status(String sNo, String transactionId, Integer accountNo, String status, String transactionType,
-			Integer jobId) {
+			String jobId) {
 		super();
 		this.sNo = sNo;
 		this.transactionId = transactionId;
@@ -88,11 +88,11 @@ public class Status {
 		this.transactionType = transactionType;
 	}
 
-	public Integer getJobId() {
+	public String getJobId() {
 		return jobId;
 	}
 
-	public void setJobId(Integer jobId) {
+	public void setJobId(String jobId) {
 		this.jobId = jobId;
 	}
 

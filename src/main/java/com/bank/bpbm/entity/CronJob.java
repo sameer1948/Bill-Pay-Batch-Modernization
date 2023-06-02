@@ -2,16 +2,21 @@ package com.bank.bpbm.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="JOB")
-public class Job {
+public class CronJob {
 	
 	@Id
+	@GenericGenerator(name = "cronJob_seq" , strategy = "com.bank.bpbm.utils.CronJobSequenceGenerator")
+	@GeneratedValue(generator = "cronJob_seq")
 	@Column(name="JOB_ID")
-	private Integer jobId;
+	private String jobId;
 	
 	@Column(name="T_TYPE")
 	private String transactionType;
@@ -25,12 +30,12 @@ public class Job {
 	@Column(name="JOB_STATUS")
 	private String jobStatus;
 	
-	public Job() {
+	public CronJob() {
 		super();
 	
 	}
 	
-	public Job(Integer jobId, String transactionType, String jobStartTime, String jobEndTime, String jobStatus) {
+	public CronJob(String jobId, String transactionType, String jobStartTime, String jobEndTime, String jobStatus) {
 		super();
 		this.jobId = jobId;
 		this.transactionType = transactionType;
@@ -39,11 +44,11 @@ public class Job {
 		this.jobStatus = jobStatus;
 	}
 
-	public Integer getJobId() {
+	public String getJobId() {
 		return jobId;
 	}
 
-	public void setJobId(Integer jobId) {
+	public void setJobId(String jobId) {
 		this.jobId = jobId;
 	}
 

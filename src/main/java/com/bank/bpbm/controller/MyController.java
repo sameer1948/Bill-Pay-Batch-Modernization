@@ -10,6 +10,7 @@ import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteExcep
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,5 +98,15 @@ public class MyController {
 		
 		return "Done...!";
 	}
+	
+	//@PostMapping("/pending")
+	@Scheduled(cron = "*/50 * * * * ?")
+	public void runPendingTransactions() {
+		System.out.println("----------------------------------------------------------------------------------------------\n"
+				+ "JOB Started At: "+ System.currentTimeMillis());
+		System.out.println(customerServices.runJob().toString());
+		System.out.println("JOB Started At: "+ System.currentTimeMillis()+"\n----------------------------------------------------------------------------------------------");
+	}
+	
 
 }

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.bank.bpbm.dto.NewCustomerRequest;
 import com.bank.bpbm.entity.Transaction;
@@ -24,6 +25,7 @@ import com.bank.bpbm.utils.TransactionListener;
 
 @EnableBatchProcessing
 @Configuration
+@EnableScheduling
 public class BatchConfig {
 	
 	@Autowired
